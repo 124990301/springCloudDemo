@@ -2,8 +2,7 @@ package order.demo;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
@@ -38,4 +37,16 @@ public class OrderControlle {
         return result;
     }
 
+    @PostMapping("/getOrder3")
+    public String getOrder3(@RequestBody JSONObject json){
+        String name = json.getString("name");
+        System.out.println(name);
+        return "订单服务返回："+name;
+    }
+
+    @GetMapping("/getOrder4")
+    public String getOrder4(@RequestParam String name){
+        System.out.println(name);
+        return "订单服务返回："+name;
+    }
 }
